@@ -1,0 +1,45 @@
+{
+  "name": "ai-core-policy-changer",
+  "version": "1.0.0",
+  "description": "GGUF file core policy changer — nightmare edition",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "build": {
+    "appId": "com.nightmaredesigns.ai-core-policy-changer",
+    "productName": "AI Core Policy Changer",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "src/**/*",
+      "assets/**/*"
+    ],
+    "linux": {
+      "target": "AppImage"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "mac": {
+      "target": "dmg"
+    }
+  },
+  "devDependencies": {
+    "electron": "^28.3.3",
+    "electron-builder": "^24.13.3"
+  },
+  "keywords": [
+    "gguf",
+    "llm",
+    "policy",
+    "electron"
+  ],
+  "author": "NightmareDesigns",
+  "license": "MIT"
+}

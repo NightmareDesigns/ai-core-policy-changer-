@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline';">
+  <title>AI CORE POLICY CHANGER // NIGHTMARE EDITION</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     BACKGROUND LAYERS
+     ═══════════════════════════════════════════════════════════════════════════ -->
+<canvas id="matrix-canvas"></canvas>
+<div class="scanlines" aria-hidden="true"></div>
+<div class="vignette"  aria-hidden="true"></div>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     CUSTOM TITLE BAR
+     ═══════════════════════════════════════════════════════════════════════════ -->
+<header class="title-bar" id="title-bar">
+  <div class="tb-left">
+    <span class="tb-skull" aria-hidden="true">☠</span>
+    <span class="tb-title glitch" data-text="AI CORE POLICY CHANGER">AI CORE POLICY CHANGER</span>
+    <span class="tb-edition">// NIGHTMARE EDITION</span>
+  </div>
+  <div class="tb-right">
+    <span class="tb-status-dot" id="tb-status-dot"></span>
+    <span class="tb-status-text" id="tb-status-text">STANDBY</span>
+    <div class="tb-win-controls">
+      <button class="wc-btn wc-min" id="btn-minimize" title="Minimize">&#9135;</button>
+      <button class="wc-btn wc-max" id="btn-maximize" title="Maximise">&#9633;</button>
+      <button class="wc-btn wc-close" id="btn-close" title="Close">&#10005;</button>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     MAIN LAYOUT
+     ═══════════════════════════════════════════════════════════════════════════ -->
+<div class="layout">
+
+  <!-- ── SIDEBAR ─────────────────────────────────────────────────────────── -->
+  <nav class="sidebar" id="sidebar">
+    <div class="sb-logo" aria-hidden="true">
+<pre class="sb-ascii">
+ ██████╗ ██████╗ ██████╗ ███████╗
+██╔════╝██╔═══██╗██╔══██╗██╔════╝
+██║     ██║   ██║██████╔╝█████╗  
+██║     ██║   ██║██╔══██╗██╔══╝  
+╚██████╗╚██████╔╝██║  ██║███████╗
+ ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝</pre>
+    </div>
+
+    <ul class="nav-list" role="tablist">
+      <li class="nav-item active" data-panel="core"     role="tab" aria-selected="true">
+        <span class="nav-icon" aria-hidden="true">⬡</span><span class="nav-label">CORE</span>
+      </li>
+      <li class="nav-item" data-panel="decrypt"  role="tab">
+        <span class="nav-icon" aria-hidden="true">⬢</span><span class="nav-label">DECRYPT</span>
+      </li>
+      <li class="nav-item" data-panel="policies" role="tab">
+        <span class="nav-icon" aria-hidden="true">◈</span><span class="nav-label">POLICIES</span>
+      </li>
+      <li class="nav-item" data-panel="tensors"  role="tab">
+        <span class="nav-icon" aria-hidden="true">◉</span><span class="nav-label">TENSORS</span>
+      </li>
+      <li class="nav-item" data-panel="hex"      role="tab">
+        <span class="nav-icon" aria-hidden="true">▦</span><span class="nav-label">HEX</span>
+      </li>
+      <li class="nav-item" data-panel="forge"    role="tab">
+        <span class="nav-icon" aria-hidden="true">⚡</span><span class="nav-label">FORGE</span>
+      </li>
+      <li class="nav-item" data-panel="terminal" role="tab">
+        <span class="nav-icon" aria-hidden="true">▶</span><span class="nav-label">TERMINAL</span>
+      </li>
+      <li class="nav-item" data-panel="settings" role="tab">
+        <span class="nav-icon" aria-hidden="true">⚙</span><span class="nav-label">SETTINGS</span>
+      </li>
+    </ul>
+
+    <div class="sb-footer">
+      <div class="sb-indicator">
+        <span class="dot flicker" aria-hidden="true">●</span> LOCAL
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── PANELS ──────────────────────────────────────────────────────────── -->
+  <main class="panels">
+
+    <!-- ══════════════════════════  CORE  ══════════════════════════ -->
+    <section class="panel active" id="panel-core" role="tabpanel">
+      <div class="panel-head">
+        <h1 class="panel-title glitch" data-text="CORE NEXUS">CORE NEXUS</h1>
+        <div class="panel-sub">SYSTEM OPERATIONAL // AWAITING COMMAND</div>
+      </div>
+
+      <div class="core-grid">
+        <!-- ASCII splash -->
+        <div class="card core-splash">
+<pre class="splash-art">
+  ░█████╗░██╗  ██████╗ ██████╗ ██████╗ ███████╗
+  ██╔══██╗██║ ██╔════╝██╔═══██╗██╔══██╗██╔════╝
+  ███████║██║ ██║     ██║   ██║██████╔╝█████╗  
+  ██╔══██║██║ ██║     ██║   ██║██╔══██╗██╔══╝  
+  ██║  ██║██║ ╚██████╗╚██████╔╝██║  ██║███████╗
+  ╚═╝  ╚═╝╚═╝  ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝
+  ██████╗  ██████╗ ██╗     ██╗ ██████╗██╗   ██╗
+  ██╔══██╗██╔═══██╗██║     ██║██╔════╝╚██╗ ██╔╝
+  ██████╔╝██║   ██║██║     ██║██║      ╚████╔╝ 
+  ██╔═══╝ ██║   ██║██║     ██║██║       ╚██╔╝  
+  ██║     ╚██████╔╝███████╗██║╚██████╗   ██║   
+  ╚═╝      ╚═════╝ ╚══════╝╚═╝ ╚═════╝   ╚═╝   
+  ░░  C H A N G E R  //  N I G H T M A R E  ░░
+</pre>
+        </div>
+
+        <!-- Quick stats -->
+        <div class="card stats-card">
+          <div class="card-head">// TELEMETRY</div>
+          <div class="stat-row"><span>FILES LOADED</span><span class="stat-val" id="stat-files">0</span></div>
+          <div class="stat-row"><span>METADATA KEYS</span><span class="stat-val" id="stat-meta">0</span></div>
+          <div class="stat-row"><span>TENSORS</span><span class="stat-val" id="stat-tensors">0</span></div>
+          <div class="stat-row"><span>MODIFIED KEYS</span><span class="stat-val modified" id="stat-modified">0</span></div>
+          <div class="stat-row"><span>FILE SIZE</span><span class="stat-val" id="stat-size">—</span></div>
+          <div class="stat-row"><span>GGUF VERSION</span><span class="stat-val" id="stat-ver">—</span></div>
+        </div>
+
+        <!-- Quick actions -->
+        <div class="card quick-card">
+          <div class="card-head">// QUICK ACTIONS</div>
+          <button class="btn btn-primary"   id="qa-load">⬢ &nbsp;LOAD GGUF</button>
+          <button class="btn btn-secondary" id="qa-policies">◈ &nbsp;POLICIES</button>
+          <button class="btn btn-accent"    id="qa-tensors">◉ &nbsp;TENSORS</button>
+          <button class="btn btn-danger"    id="qa-forge">⚡ &nbsp;FORGE REBUILD</button>
+        </div>
+
+        <!-- Active file -->
+        <div class="card file-card">
+          <div class="card-head">// ACTIVE FILE</div>
+          <div id="core-file-info">
+            <div class="no-file">NO FILE LOADED</div>
+            <div class="no-file-sub">DRAG &amp; DROP A .GGUF FILE ANYWHERE<br>OR USE THE DECRYPT PANEL</div>
+          </div>
+        </div>
+
+        <!-- System info -->
+        <div class="card sys-card">
+          <div class="card-head">// SYSTEM INFO</div>
+          <div class="sys-row"><span>PLATFORM</span><span id="si-platform">…</span></div>
+          <div class="sys-row"><span>ARCH</span><span id="si-arch">…</span></div>
+          <div class="sys-row"><span>NODE</span><span id="si-node">…</span></div>
+          <div class="sys-row"><span>ELECTRON</span><span id="si-electron">…</span></div>
+          <div class="sys-row"><span>CHROME</span><span id="si-chrome">…</span></div>
+        </div>
+
+        <!-- Warning -->
+        <div class="card warn-card">
+          <div class="warn-icon" aria-hidden="true">⚠</div>
+          <div class="warn-text">
+            MODIFYING GGUF POLICIES MAY CORRUPT MODELS.<br>
+            ALWAYS BACKUP YOUR FILES BEFORE PROCEEDING.<br>
+            <span class="flicker red-text">YOU HAVE BEEN WARNED.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════  DECRYPT  ══════════════════════════ -->
+    <section class="panel" id="panel-decrypt" role="tabpanel">
+      <div class="panel-head">
+        <h1 class="panel-title glitch" data-text="DECRYPT">DECRYPT</h1>
+        <div class="panel-sub">LOAD AND PARSE A GGUF MODEL FILE</div>
+      </div>
+
+      <!-- Drop zone -->
+      <div class="drop-zone" id="drop-zone">
+        <div class="drop-icon" aria-hidden="true">⬇</div>
+        <div class="drop-title">DROP GGUF FILE HERE</div>
+        <div class="drop-sub">or</div>
+        <button class="btn btn-primary" id="btn-browse">BROWSE FILE SYSTEM</button>
+        <div class="drop-hint">Supported: .gguf (GGUF v1 / v2 / v3)</div>
+      </div>
+
+      <!-- Parse result -->
+      <div class="parse-result" id="parse-result" style="display:none">
+        <div class="card">
+          <div class="card-head">// FILE ANALYSIS</div>
+          <div id="parse-info"></div>
+        </div>
+        <div class="card">
+          <div class="card-head">// ARCHITECTURE FINGERPRINT</div>
+          <div id="arch-info"></div>
+        </div>
+      </div>
+
+      <!-- Progress -->
+      <div class="parse-progress" id="parse-progress" style="display:none">
+        <div class="progress-label" id="parse-progress-label">PARSING…</div>
+        <div class="progress-track">
+          <div class="progress-fill" id="parse-progress-fill" style="width:0%"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════  POLICIES  ══════════════════════════ -->
+    <section class="panel" id="panel-policies" role="tabpanel">
+      <div class="panel-head">
+        <h1 class="panel-title glitch" data-text="POLICIES">POLICIES</h1>
+        <div class="panel-sub">EDIT METADATA KEY–VALUE PAIRS</div>
+      </div>
+
+      <div class="toolbar">
+        <input class="search-box" id="policy-search" type="text" placeholder="SEARCH KEYS…" spellcheck="false">
+        <button class="btn btn-sm btn-secondary" id="btn-add-policy">+ ADD KEY</button>
+        <button class="btn btn-sm btn-accent"    id="btn-export-json">↓ EXPORT JSON</button>
+        <button class="btn btn-sm btn-danger"    id="btn-reset-policies">↺ RESET ALL</button>
+      </div>
+
+      <div class="no-file-msg" id="policies-empty">LOAD A GGUF FILE TO VIEW POLICIES</div>
+
+      <div class="table-wrap" id="policies-table-wrap" style="display:none">
+        <table class="data-table" id="policies-table">
+          <thead>
+            <tr>
+              <th data-sort="key">KEY ▲</th>
+              <th data-sort="type">TYPE</th>
+              <th data-sort="value">VALUE</th>
+              <th>STATUS</th>
+              <th>ACTIONS</th>
+            </tr>
+          </thead>
+          <tbody id="policies-tbody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════  TENSORS  ══════════════════════════ -->
+    <section class="panel" id="panel-tensors" role="tabpanel">
+      <div class="panel-head">
+        <h1 class="panel-title glitch" data-text="TENSORS">TENSORS</h1>
+        <div class="panel-sub">INSPECT MODEL TENSOR TOPOLOGY</div>
+      </div>
+
+      <div class="toolbar">
+        <input class="search-box" id="tensor-search" type="text" placeholder="SEARCH TENSORS…" spellcheck="false">
+        <select class="select-box" id="tensor-type-filter">
+          <option value="">ALL TYPES</option>
+        </select>
+        <span class="toolbar-info" id="tensor-count-label">—</span>
+      </div>
+
+      <div class="no-file-msg" id="tensors-empty">LOAD A GGUF FILE TO INSPECT TENSORS</div>
+
+      <div class="table-wrap" id="tensors-table-wrap" style="display:none">
+        <table class="data-table" id="tensors-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th data-sort="name">NAME ▲</th>
+              <th data-sort="type">TYPE</th>
+              <th>DIMENSIONS</th>
+              <th>ELEMENTS</th>
+              <th>OFFSET</th>
+            </tr>
+          </thead>
+          <tbody id="tensors-tbody"></tbody>
+        </table>
+      </div>
+
+      <!-- Tensor detail drawer -->
+      <div class="tensor-drawer" id="tensor-drawer" style="display:none">
+        <div class="drawer-head">
+          <span id="drawer-name"></span>
+          <button class="btn btn-sm btn-danger" id="drawer-close">✕</button>
+        </div>
+        <div id="drawer-body"></div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════  HEX  ══════════════════════════ -->
+    <section class="panel" id="panel-hex" role="tabpanel">
+      <div class="panel-head">
+        <h1 class="panel-title glitch" data-text="HEX CORE">HEX CORE</h1>
+        <div class="panel-sub">RAW BINARY INSPECTION</div>
+      </div>
+
+      <div class="toolbar">
+        <label class="tb-label">OFFSET (hex)</label>
+        <input class="offset-input" id="hex-offset-input" type="text" value="0" spellcheck="false">
+        <button class="btn btn-sm btn-primary" id="btn-hex-goto">GO</button>
+        <button class="btn btn-sm btn-secondary" id="btn-hex-start">⏮ START</button>
+        <button class="btn btn-sm btn-secondary" id="btn-hex-end">⏭ END</button>
+        <span class="toolbar-info" id="hex-pos-label">—</span>
+      </div>
+
+      <div class="no-file-msg" id="hex-empty">LOAD A GGUF FILE TO VIEW HEX DUMP</div>
+
+      <div class="hex-container" id="hex-container" style="display:none">
+        <div class="hex-header">
+          <span class="hex-offset-col">OFFSET</span>
+          <span class="hex-bytes-col">00 01 02 03 04 05 06 07  08 09 0A 0B 0C 0D 0E 0F</span>
+          <span class="hex-ascii-col">ASCII</span>
+        </div>
+        <div class="hex-body" id="hex-body"></div>
+        <div class="hex-nav">
+          <button class="btn btn-sm btn-secondary" id="btn-hex-prev">◀ PREV PAGE</button>
+          <span id="hex-page-info">—</span>
+          <button class="btn btn-sm btn-secondary" id="btn-hex-next">NEXT PAGE ▶</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════  FORGE  ══════════════════════════ -->
+    <section class="panel" id="panel-forge" role="tabpanel">
+      <div class="panel-head">
+        <h1 class="panel-title glitch" data-text="FORGE">FORGE</h1>
+        <div class="panel-sub">REBUILD AND EXPORT MODIFIED GGUF</div>
+      </div>
+
+      <div class="no-file-msg" id="forge-empty">LOAD A GGUF FILE BEFORE FORGING</div>
+
+      <div id="forge-content" style="display:none">
+        <div class="forge-grid">
+          <!-- Summary -->
+          <div class="card">
+            <div class="card-head">// CHANGE SUMMARY</div>
+            <div id="forge-summary"></div>
+          </div>
+
+          <!-- Output -->
+          <div class="card">
+            <div class="card-head">// OUTPUT PATH</div>
+            <div class="output-path-row">
+              <input class="path-input" id="forge-out-path" type="text" placeholder="Select output path…" readonly>
+              <button class="btn btn-secondary" id="btn-forge-pick">BROWSE</button>
+            </div>
+            <div class="forge-options">
+              <label class="checkbox-label">
+                <input type="checkbox" id="forge-verify" checked>
+                <span>Verify magic after write</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Action -->
+          <div class="card forge-action-card">
+            <button class="btn btn-danger btn-lg" id="btn-forge-rebuild" disabled>
+              ⚡ &nbsp;FORGE REBUILD
+            </button>
+            <div class="forge-progress" id="forge-progress" style="display:none">
+              <div class="progress-label" id="forge-progress-label">FORGING…</div>
+              <div class="progress-track">
+                <div class="progress-fill animated" id="forge-progress-fill" style="width:0%"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Log -->
+          <div class="card forge-log-card">
+            <div class="card-head">// FORGE LOG</div>
+            <div class="forge-log" id="forge-log"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════  TERMINAL  ══════════════════════════ -->
+    <section class="panel" id="panel-terminal" role="tabpanel">
+      <div class="panel-head">
+        <h1 class="panel-title glitch" data-text="TERMINAL">TERMINAL</h1>
+        <div class="panel-sub">SYSTEM LOG OUTPUT</div>
+      </div>
+
+      <div class="term-toolbar">
+        <button class="btn btn-sm btn-secondary" id="btn-term-clear">CLEAR</button>
+        <button class="btn btn-sm btn-secondary" id="btn-term-copy">COPY ALL</button>
+        <label class="checkbox-label">
+          <input type="checkbox" id="term-autoscroll" checked>
+          <span>Auto-scroll</span>
+        </label>
+        <span id="term-count-label" class="toolbar-info">0 lines</span>
+      </div>
+
+      <div class="terminal" id="terminal" aria-live="polite" aria-label="Terminal output">
+        <div class="term-line info">
+          <span class="term-ts"></span>
+          <span class="term-tag">SYS</span>
+          <span class="term-msg">AI CORE POLICY CHANGER — NIGHTMARE EDITION — READY</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════  SETTINGS  ══════════════════════════ -->
+    <section class="panel" id="panel-settings" role="tabpanel">
+      <div class="panel-head">
+        <h1 class="panel-title glitch" data-text="SETTINGS">SETTINGS</h1>
+        <div class="panel-sub">CONFIGURE THE NIGHTMARE</div>
+      </div>
+
+      <div class="settings-grid">
+        <div class="card">
+          <div class="card-head">// VISUAL</div>
+          <div class="setting-row">
+            <label>Scanlines</label>
+            <input type="checkbox" id="s-scanlines" checked>
+          </div>
+          <div class="setting-row">
+            <label>Matrix Rain</label>
+            <input type="checkbox" id="s-matrix" checked>
+          </div>
+          <div class="setting-row">
+            <label>Glitch Effects</label>
+            <input type="checkbox" id="s-glitch" checked>
+          </div>
+          <div class="setting-row">
+            <label>Vignette</label>
+            <input type="checkbox" id="s-vignette" checked>
+          </div>
+          <div class="setting-row">
+            <label>Matrix Rain Color</label>
+            <select class="select-box" id="s-rain-color">
+              <option value="red">BLOOD RED</option>
+              <option value="green">MATRIX GREEN</option>
+              <option value="purple">VOID PURPLE</option>
+              <option value="cyan">CYBER CYAN</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">// PERFORMANCE</div>
+          <div class="setting-row">
+            <label>Hex Page Size (rows)</label>
+            <select class="select-box" id="s-hex-rows">
+              <option value="32">32</option>
+              <option value="64" selected>64</option>
+              <option value="128">128</option>
+              <option value="256">256</option>
+            </select>
+          </div>
+          <div class="setting-row">
+            <label>Max Header Read (MiB)</label>
+            <select class="select-box" id="s-max-header">
+              <option value="16">16</option>
+              <option value="32" selected>32</option>
+              <option value="64">64</option>
+              <option value="128">128</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">// ABOUT</div>
+          <div class="about-block">
+            <div class="about-row"><span>APPLICATION</span><span>AI Core Policy Changer</span></div>
+            <div class="about-row"><span>EDITION</span><span class="red-text">NIGHTMARE</span></div>
+            <div class="about-row"><span>AUTHOR</span><span>NightmareDesigns</span></div>
+            <div class="about-row"><span>LICENSE</span><span>MIT</span></div>
+            <div class="about-row"><span>GGUF SPEC</span><span>v1 / v2 / v3</span></div>
+          </div>
+          <div class="about-warning flicker">
+            THE VOID STARES BACK.<br>
+            ☠ &nbsp; ☠ &nbsp; ☠
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main><!-- /panels -->
+</div><!-- /layout -->
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     STATUS BAR
+     ═══════════════════════════════════════════════════════════════════════════ -->
+<footer class="status-bar">
+  <div class="sb-left">
+    <span id="sb-mode">STANDBY</span>
+    <span class="sb-sep">│</span>
+    <span id="sb-file">NO FILE</span>
+  </div>
+  <div class="sb-center">
+    <div class="mini-progress" id="sb-progress" style="display:none">
+      <div class="mini-fill" id="sb-progress-fill"></div>
+    </div>
+  </div>
+  <div class="sb-right">
+    <span id="sb-offset">OFF: 0x00000000</span>
+    <span class="sb-sep">│</span>
+    <span id="sb-clock">--:--:--</span>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     TOAST NOTIFICATIONS
+     ═══════════════════════════════════════════════════════════════════════════ -->
+<div class="toast-container" id="toast-container" aria-live="assertive"></div>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     MODAL
+     ═══════════════════════════════════════════════════════════════════════════ -->
+<div class="modal-backdrop" id="modal-backdrop" style="display:none" aria-modal="true" role="dialog">
+  <div class="modal-box" id="modal-box">
+    <div class="modal-head" id="modal-head"></div>
+    <div class="modal-body" id="modal-body"></div>
+    <div class="modal-foot" id="modal-foot"></div>
+  </div>
+</div>
+
+<script src="gguf-parser.js"></script>
+<script src="renderer.js"></script>
+</body>
+</html>
