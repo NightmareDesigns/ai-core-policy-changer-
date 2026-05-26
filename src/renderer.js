@@ -26,8 +26,6 @@ const State = {
 
 // ─── Logging ──────────────────────────────────────────────────────────────────
 
-const LOG_LEVELS = { sys:0, info:1, ok:2, warn:3, error:4, debug:5 };
-
 function log (level, ...args) {
   const msg  = args.join(' ');
   const ts   = new Date().toTimeString().slice(0,8);
@@ -625,7 +623,8 @@ async function startForge () {
   const res = await window.api.rebuildGguf(
     State.filePath, outPath,
     Array.from(headerBytes),
-    p.dataOffset
+    p.dataOffset,
+    p.alignment
   );
 
   if (!res.success) {

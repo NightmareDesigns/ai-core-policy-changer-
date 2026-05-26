@@ -19,8 +19,8 @@ contextBridge.exposeInMainWorld('api', {
   writeJson:     (p, content)       => ipcRenderer.invoke('write-json', p, content),
 
   // GGUF rebuild
-  rebuildGguf:  (inp, out, hdr, dataOff) =>
-                                    ipcRenderer.invoke('rebuild-gguf', inp, out, hdr, dataOff),
+  rebuildGguf:  (inp, out, hdr, dataOff, alignment) =>
+                                    ipcRenderer.invoke('rebuild-gguf', inp, out, hdr, dataOff, alignment),
 
   // Shell
   showInFolder: (p)                 => ipcRenderer.invoke('show-in-folder', p),

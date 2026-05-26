@@ -132,13 +132,13 @@ ipcMain.handle('write-json', async (_e, filePath, content) => {
 // ─── GGUF streaming rebuild ───────────────────────────────────────────────────
 // Takes a pre-built header (as number array) and streams the tensor-data
 // section from the original file into a new output file.
-ipcMain.handle('rebuild-gguf', async (_e, inputPath, outputPath, headerArray, originalDataOffset) => {
+ipcMain.handle('rebuild-gguf', async (_e, inputPath, outputPath, headerArray, originalDataOffset, alignment) => {
   try {
-    const headerBuf = Buffer.from(headerArray);
-    const alignment = 32; // default GGUF alignment
+    const headerBuf  = Buffer.from(headerArray);
+    const alignBytes = alignment || 32;
 
-    // Align new header to alignment boundary
-    const paddedLen  = Math.ceil(headerBuf.length / alignment) * alignment;
+    // Align new header to the file's alignment boundary
+    const paddedLen  = Math.ceil(headerBuf.length / alignBytes) * alignBytes;
     const padding    = Buffer.alloc(paddedLen - headerBuf.length, 0);
 
     const outFd = fs.openSync(outputPath, 'w');
